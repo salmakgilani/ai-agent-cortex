@@ -44,11 +44,11 @@ _`state` is always-on. `connectors` only if you already have one wired (e.g. a J
 | **Work tree** (isolated workspace per run, a git worktree) | Not needed yet, because Cortex is a single-loop agent with no parallel workstreams requiring an isolated workspace per run |
 | **Skills** (reusable capabilities) | Not needed yet, because no reusable task-specific capability has been defined |
 | **Plugins / connectors** (tools & access, optional if you don't have one yet) | Not wired yet — plan is to wire a real GitHub connector next, since the repo and activity data already live there |
-| **Subagents** (independent check when the loop can't grade itself) | Not needed yet, because Cortex is a single-loop agent with no parallel or independent verification step yet — placeholder → M3 orchestration-map.md |
+| **Subagents** (independent check when the loop can't grade itself) | Added in M3: one independent critic subagent validates each draft before it reaches a human (a single drafting loop otherwise); see `03-orchestration/orchestration-map.md` |
 | **State tracking** | Per-project context + last week's update (see §4) |
 
 > Context plan (M4) and the hand-off to bounds & evals (M5) come in later modules, you'll add them to their own deliverables then, not here.
 
 ## Link to live loop
 
-_[path to your agent in `00-build/`]_
+`00-build/agent.py` is the loop, with `critic.py` (the validator), `prompts.py` (system prompts), and `tools.py` (the read-only tools) alongside it. Run it with `python agent.py` from `00-build/`.

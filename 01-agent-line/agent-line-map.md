@@ -21,12 +21,12 @@ List every discrete decision or action in your agent's workflow, then score each
 
 ## Agent anatomy (sketch)
 
-- **Model:** `gpt-4o-mini` by default (cheap, fast, fine for drafting/summarizing). Escalate to a frontier model (e.g. `gpt-4o` or better) when a task is flagged ambiguous or high-stakes — a `get_task` fixture like `"jailbreak"` or `"missing-data"`, or anything touching confidential/embargoed roadmap items — where a subtle miss is expensive and the cheap model is more likely to miss nuance.
+- **Model:** `claude-haiku-4-5` by default (cheap, fast, fine for drafting/summarizing). Escalate to a more capable model (e.g. `claude-sonnet-5` or better) when a task is flagged ambiguous or high-stakes — a `get_task` fixture like `"jailbreak"` or `"missing-data"`, or anything touching confidential/embargoed roadmap items — where a subtle miss is expensive and the cheap model is more likely to miss nuance.
 - **Tools:** `get_task` · `get_project` · `get_activity` · `search_past_updates` · `get_roadmap` · `get_norms` · `propose_stories` (capped). Deliberately absent: `post_update`, `create_issue`/`merge_pr`, `commit_ship_date` — the agent line is enforced in infrastructure (no tool exists to act on the world), not by a prompt.
 - **Memory:** Roadmap, decision log, and past updates persist across runs (the precedent Cortex draws on via `search_past_updates`/`get_roadmap`/`get_norms`). The specific task brief and any per-run scratch state are purged after each run.
-- **Loop:** _placeholder, defined in M2 loop-spec.md_
-- **Bounds:** _placeholder, defined in M5 bounds-and-evals.md_
-- **Evals:** _placeholder, defined in M5 bounds-and-evals.md_
+- **Loop:** Hook on inbound tasks plus a Monday-morning cron sweep; see `02-loop-design/loop-spec.md`.
+- **Bounds:** 8 iterations, $0.50/run, a 10-story queue cap, and a critic revision cap of 2 are enforced in code; see `05-bounds-evals/bounds-and-evals.md`.
+- **Evals:** Five trajectory eval cases (EV-1 to EV-5) and a four-fixture replay set; see `05-bounds-evals/bounds-and-evals.md`.
 
 ## The golden rule, applied
 

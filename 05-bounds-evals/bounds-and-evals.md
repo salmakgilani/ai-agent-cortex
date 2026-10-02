@@ -18,6 +18,10 @@
 | **Kill switch** | Revoking/rotating the API key or deleting the deployment's credentials halts everything immediately | A misbehaving agent you can't otherwise stop |
 | **HITL checkpoints** | From the M1 agent-line map — Above: propose a story batch (capped), post an update / approve company-wide. HITL: decide relevant context, decide tone/commitment level, flag at-risk/escalation, choose what to escalate. Both Above items are enforced outside the model already (queue cap rejects over-limit batches; no publish tool exists at all, so posting is physically impossible, not just instructed against). | Acting above the line without a human — irreversible actions (post / commit date / merge) |
 
+**Enforcement status (honest):**
+- **Enforced in code today** (`agent.py` / `tools.py`): max iterations (8), the $0.50/run cost cap, the 10-story queue cap, and the critic revision cap of 2 (from M3). Posting is impossible because no publish tool exists.
+- **Specified but not yet implemented:** the 90s timeout, the $5/day cap, and the single-use credential scheme. The kill switch is a manual operation (revoke the API key), not code.
+
 ## 2. Failure-mode register
 
 | Failure mode | How detected | PM lever |
