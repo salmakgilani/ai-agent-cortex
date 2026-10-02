@@ -1,6 +1,6 @@
 # Cortex, a PM Chief-of-Staff Agent
 
-> A chief-of-staff, an orchestrated swarm of agents that triages a PM task, pulls internal state, and preps a status update plus a story batch, so the team approves instead of assembling from scratch.
+> A PM chief-of-staff agent with an independent critic: it triages a PM task, pulls internal state, and preps a status update plus a story batch, so the team approves instead of assembling from scratch.
 
 _Salma K · Agentic Loops for PMs Cohort · Oct 2026_
 
